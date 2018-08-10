@@ -43,8 +43,18 @@ public class CyclistDAOImpl implements CyclistDAO {
 		
 		//save
 		
-		currentSession.save(theCyclist);
+		currentSession.saveOrUpdate(theCyclist);
 
+	}
+
+	@Override
+	public Cyclist getCyclist(int theId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Cyclist theCyclist = currentSession.get(Cyclist.class, theId);
+		
+		return theCyclist;
+		
 	}
 
 }

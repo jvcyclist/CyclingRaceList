@@ -9,5 +9,8 @@ public interface CyclistDAO {
 	public List<Cyclist> getCyclists();
 	
 	public void saveCyclist(Cyclist theCyclist);
+
+	public Cyclist getCyclist(int theId);
+
 	
 }

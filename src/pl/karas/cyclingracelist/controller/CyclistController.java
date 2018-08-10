@@ -19,14 +19,14 @@ import pl.karas.cyclingracelist.service.CyclistService;
 public class CyclistController {
 	
 	@Autowired
-	CyclistService cycllistService;
+	private CyclistService cyclistService;
 	
 	
 	
 	@GetMapping("/show")
 	public String listCyclists(Model theModel){
 		
-		List<Cyclist> theCyclist = cycllistService.getCyclists();
+		List<Cyclist> theCyclist = cyclistService.getCyclists();
 		
 		theModel.addAttribute("cyclists",theCyclist);
 		
@@ -36,7 +36,7 @@ public class CyclistController {
 
 	
 	@GetMapping("/showFormForAdd")
-	public String showFormForaAdd(Model theModel){
+	public String showFormForAdd(Model theModel){
 		Cyclist theCyclist = new Cyclist();
 		
 		theModel.addAttribute("cyclist",theCyclist);
@@ -49,12 +49,12 @@ public class CyclistController {
 	public String showFormForaAdd(@RequestParam("cyclistId")int theId,Model theModel){
 	
 		//get the customer from database
-		Cyclist theCyclist = CyclistService.getCyclist(theId);
+		Cyclist theCyclist = cyclistService.getCyclist(theId);
 		
-		theModel.addAttribute("cyclist",theCyclist);
+		theModel.addAttribute("cyclist", theCyclist);
 		
 		
-		return "cyclist-form"; 
+		return "form-for-add"; 
 	}
 	
 	
@@ -62,7 +62,7 @@ public class CyclistController {
 	
 	@PostMapping("/saveCyclist")
 	public String saveCyclist(@ModelAttribute("cyclist") Cyclist theCyclist){
-		cycllistService.saveCyclists(theCyclist);
+		cyclistService.saveCyclists(theCyclist);
 	return "redirect:/cyclist/show";
 	}
 	}

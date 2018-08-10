@@ -32,9 +32,9 @@ public class CyclistServiceImpl implements CyclistService {
 	}
 
 	@Override
+	@Transactional
 	public Cyclist getCyclist(int theId) {
-		// TODO Auto-generated method stub
-		
+		return cyclistDAO.getCyclist(theId);
 	}
 
 
