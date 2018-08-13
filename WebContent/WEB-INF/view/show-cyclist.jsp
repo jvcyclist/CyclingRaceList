@@ -12,7 +12,7 @@
 
 <body>
 <h1>CYCLISTS !!!</h1><br><br><br>
-<input type="button" value="Add Cyclist" onclick="window.location.href='showFormForAdd';return false;"
+<input type="button" value="Add Cyclist" onclick="window.location.href='/CyclingRaceList/cyclist/showFormForAdd';return false;"
 />
 
 <br>
@@ -32,12 +32,10 @@
 
 <c:url var="updateLink" value="/cyclist/showFormForUpdate">
 <c:param name="cyclistId" value="${tempCyclist.id}"/>
-</c:url>
-
-
+ </c:url>
 
 <c:url var="deleteLink" value="/cyclist/delete">
-<c:param name="cyclistId" value="${tempCyclist.id}"/>
+<c:param name="cyclistId" value="${tempCyclist.id}" />
 </c:url>
 
 <tr>
@@ -49,27 +47,14 @@
 <td>${tempCyclist.category}</td>
 <td><a href="${updateLink}">Update</a> | <a href="${deleteLink}" onclick="if (!(confirm('Do you want to delete this cyclist?: ${tempCyclist.firstName} ${tempCyclist.lastName}'))) return false">Delete</a>
 
-
 </td>
 
 </tr>
 
-
-
 </c:forEach>
-
-
-
 
 </table>
 
-
-
-
-
-
 </body>
-
-
 
 </html>

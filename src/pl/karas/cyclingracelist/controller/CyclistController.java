@@ -21,8 +21,6 @@ public class CyclistController {
 	@Autowired
 	private CyclistService cyclistService;
 	
-	
-	
 	@GetMapping("/show")
 	public String listCyclists(Model theModel){
 		
@@ -33,8 +31,6 @@ public class CyclistController {
 		return "show-cyclist"; 
 	}
 	
-
-	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel){
 		Cyclist theCyclist = new Cyclist();
@@ -44,21 +40,17 @@ public class CyclistController {
 		return "form-for-add"; 
 	}
 	
-	
 	@GetMapping("/showFormForUpdate")
-	public String showFormForaAdd(@RequestParam("cyclistId")int theId,Model theModel){
+	public String showFormForUpdate(@RequestParam("cyclistId")int theId,Model theModel){
 	
 		//get the customer from database
 		Cyclist theCyclist = cyclistService.getCyclist(theId);
 		
 		theModel.addAttribute("cyclist", theCyclist);
 		
-		
 		return "form-for-add"; 
 	}
-	
-	
-	
+	 
 	
 	@PostMapping("/saveCyclist")
 	public String saveCyclist(@ModelAttribute("cyclist") Cyclist theCyclist){
